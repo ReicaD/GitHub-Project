@@ -1,11 +1,14 @@
- 
-// import "./App.css";
-
+import {BrowserRouter as Router} from 'react-router-dom'
+import Navbar from './components/Layout/Navbar';
 function App() {
   return (
-    <div>
-      <h1>All Alliens!</h1>
-    </div>
+    <Router>
+     <div className='flex flex-col justify-between h-screen'>
+       <Navbar/>
+
+       <main>Content</main>
+     </div>
+    </Router>
   );
 }
 
