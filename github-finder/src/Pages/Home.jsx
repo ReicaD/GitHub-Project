@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
 
 function Home() {
   return (
-    <div><h1 className='text-6xl'>Welcome To see All Users</h1></div>
-  )
+    <div>
+      {" "}
+      <strong>
+        <h1 className="text-4xl">Welcome to DevTracker</h1>
+      </strong>
+    </div>
+  );
 }
 
-export default Home
+export default Home;
