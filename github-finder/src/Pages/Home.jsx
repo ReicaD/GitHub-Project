@@ -1,13 +1,16 @@
 import React from "react";
+import UserResult from "../components/users/UserResult";
 
 function Home() {
   return (
-    <div>
+    <>
       {" "}
       <strong>
-        <h1 className="text-4xl">Welcome to DevTracker</h1>
+        {/* SEARCH COMPONENTS HERE! */}
+        <UserResult />
       </strong>
-    </div>
+      {/* {process.env.REACT_APP_GITHUB_URL} */}
+    </>
   );
 }
 
