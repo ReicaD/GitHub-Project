@@ -11,12 +11,12 @@ function App() {
         <Navbar />
 
         <main className="container mx-auto px-3 pb-12">
-        <Routes>
-          <Route path="/" element={<Home/>}></Route>
-          <Route path="/about" element={<About/>}></Route>
-          <Route path="/notFound" element={<NotFound/>}></Route>
-          <Route path="/*" element={<NotFound/>}></Route>
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/notFound" element={<NotFound />}></Route>
+            <Route path="/*" element={<NotFound />}></Route>
+          </Routes>
         </main>
         <Footer />
       </div>
