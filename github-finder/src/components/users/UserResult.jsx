@@ -1,16 +1,16 @@
 // import { useEffect } from "react";
-import { useEffect, useContext } from "react";
+import {useContext } from "react";
 import Spinner from "../Layout/Spinner";
-import Spinners from "../Layout/Spinner";
+// import Spinners from "../Layout/Spinner";
 import UserItems from "../users/UserItems";
 import GithubContext from "../../Context/github/GithubContext";
 
 function UserResult() {
-  const { users, loading, fetchUsers } = useContext(GithubContext);
+  const { users, loading} = useContext(GithubContext);
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, []);
 
    
 
@@ -23,7 +23,7 @@ function UserResult() {
       </div>
     );
   } else {
-    return <Spinners />;
+    return <Spinner />;
   }
 }
 export default UserResult;
