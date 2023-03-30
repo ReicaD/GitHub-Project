@@ -14,15 +14,15 @@ function UserResult() {
   //adding a token to render the users, use effect and fetchUsers function
   const fetchUsers = async () => {
     const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users`, {
-      // headers: {
-      //   Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
-      // },
     });
     const data = await response.json();
     setUsers(data)
-   setLoading(false)
+    setLoading(false)
   };
-
+  
+  // headers: {
+  //   Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
+  // },
 // console.log("this is", users);
 
 if(!loading){
