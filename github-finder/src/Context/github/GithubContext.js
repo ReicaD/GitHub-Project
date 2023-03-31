@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import githbReducer from "./GithubReducers";
+import githubReducer from "./GithubReducers";
 
 //adding a token to render the users, use effect and fetchUsers function
 const GithubContext = createContext();
@@ -12,9 +12,9 @@ export const GithubProvider = ({ children }) => {
     users: [],
     loading: false,
   };
-  const [state, dispatch] = useReducer(githbReducer, initialState);
+  const [state, dispatch] = useReducer(githubReducer, initialState);
 
-  
+    
 //getting initial users(testing purposes)
   const fetchUsers = async () => {
     setLoading()
