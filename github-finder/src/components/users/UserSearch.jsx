@@ -3,10 +3,11 @@ import { useState, useContext } from "react";
 import GithubContext from "../../Context/github/GithubContext";
 
 function UserSearch() {
+  //set text is added for submitting the search from the context store
   const [text, setText] = useState("");
 
   //acsess to users array making sure its not empty
-  const { users } = useContext(GithubContext);
+  const { users,searchUsers} = useContext(GithubContext);
 
   //updates the state on the texte that is typed in by targeting the value
   const handleChange = (e) => setText(e.target.value);
@@ -18,6 +19,7 @@ function UserSearch() {
       alert("Warning:type in something");
     } else {
       //@todo search user
+      searchUsers(text)
       setText("");
     }
   };

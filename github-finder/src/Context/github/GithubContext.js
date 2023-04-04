@@ -14,28 +14,30 @@ export const GithubProvider = ({ children }) => {
   };
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
-    
-//getting initial users(testing purposes)
-  const fetchUsers = async () => {
-    setLoading()
-    const response = await fetch(`${GITHUB_URL}/users`, {});
-    const data = await response.json();
+  //get search results
+  const searchUsers = async (text) => {
+    setLoading();
+    const params = new URLSearchParams({
+      q: text,
+    });
+    const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {});
+    const {items} = await response.json();
 
     dispatch({
       type: "GET_USERS",
-      payload: data,
+      payload: items,
     });
   };
 
   //setting the loading
-  const setLoading =()=> dispatch({type:"SET_LOADING"})
+  const setLoading = () => dispatch({ type: "SET_LOADING" });
   //the children passed here will be out put in the value of the user and ;loading
   return (
     <GithubContext.Provider
       value={{
         users: state.users,
-        loading:state.loading,
-        fetchUsers,
+        loading: state.loading,
+        searchUsers,
       }}
     >
       {children}
