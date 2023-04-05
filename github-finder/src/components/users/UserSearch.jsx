@@ -7,7 +7,8 @@ function UserSearch() {
   const [text, setText] = useState("");
 
   //acsess to users array making sure its not empty
-  const { users, searchUsers, clearUsers,clearAllUsers } = useContext(GithubContext);
+  const { users, searchUsers, clearUsers, clearAllUsers } =
+    useContext(GithubContext);
 
   //updates the state on the texte that is typed in by targeting the value
   const handleChange = (e) => setText(e.target.value);
