@@ -7,7 +7,7 @@ function UserSearch() {
   const [text, setText] = useState("");
 
   //acsess to users array making sure its not empty
-  const { users,searchUsers} = useContext(GithubContext);
+  const { users, searchUsers, clearUsers,clearAllUsers } = useContext(GithubContext);
 
   //updates the state on the texte that is typed in by targeting the value
   const handleChange = (e) => setText(e.target.value);
@@ -19,7 +19,7 @@ function UserSearch() {
       alert("Warning:type in something");
     } else {
       //@todo search user
-      searchUsers(text)
+      searchUsers(text);
       setText("");
     }
   };
@@ -49,7 +49,9 @@ function UserSearch() {
       {/* if users are available the condition below will display */}
       {users.length > 0 && (
         <div>
-          <button className="btn btn-ghost btn-lg">Clear</button>
+          <button onClick={clearAllUsers} className="btn btn-ghost btn-lg">
+            Clear Users
+          </button>
         </div>
       )}
     </div>
