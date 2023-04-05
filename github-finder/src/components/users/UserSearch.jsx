@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
-import GithubContext from "../../Context/github/GithubContext";
+import GithubContext from "../../github/GithubContext";
 
 function UserSearch() {
   //set text is added for submitting the search from the context store

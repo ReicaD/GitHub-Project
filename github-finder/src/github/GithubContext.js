@@ -1,5 +1,5 @@
 import { createContext, useReducer, useState } from "react";
-import githubReducer from "./GithubReducers";
+import githubReducer from "../github/GithubReducers";
 
 //adding a token to render the users, use effect and fetchUsers function
 const GithubContext = createContext();
