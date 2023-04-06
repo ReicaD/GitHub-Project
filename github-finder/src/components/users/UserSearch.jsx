@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useContext } from "react";
 import GithubContext from "../../Context/github/GithubContext";
+import AlertContext from "../../Context/alert/AlertContext";
 
 function UserSearch() {
   //set text is added for submitting the search from the context store
@@ -9,7 +10,7 @@ function UserSearch() {
   //acsess to users array making sure its not empty
   const { users, searchUsers, clearUsers, clearAllUsers } =
     useContext(GithubContext);
-
+//this function  will help to fire the alert
   //updates the state on the texte that is typed in by targeting the value
   const handleChange = (e) => setText(e.target.value);
   const handleSubmit = (e) => {
