@@ -21,11 +21,11 @@ function UserSearch() {
 
     //validation to confirm if data subjected exists
     if (text === "") {
-      setAlert("Warning:type in something","error");
+      setAlert("Warning:type in something", "error");
     } else {
       //@todo search user
       searchUsers(text);
-      
+
       setText("");
     }
   };
