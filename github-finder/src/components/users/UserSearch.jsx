@@ -10,7 +10,10 @@ function UserSearch() {
   //acsess to users array making sure its not empty
   const { users, searchUsers, clearUsers, clearAllUsers } =
     useContext(GithubContext);
-//this function  will help to fire the alert
+
+  //this function  will help to fire the alert
+  const { setAlert } = useContext(AlertContext);
+
   //updates the state on the texte that is typed in by targeting the value
   const handleChange = (e) => setText(e.target.value);
   const handleSubmit = (e) => {
@@ -18,10 +21,11 @@ function UserSearch() {
 
     //validation to confirm if data subjected exists
     if (text === "") {
-      alert("Warning:type in something");
+      setAlert("Warning:type in something","error");
     } else {
       //@todo search user
       searchUsers(text);
+      
       setText("");
     }
   };
