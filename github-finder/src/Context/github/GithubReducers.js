@@ -6,6 +6,12 @@ const githbReducer = (state, action) => {
         users: action.payload,
         loading: false,
       };
+    case "GET_USERS":
+      return {
+        ...state,
+        user: action.payload,
+        loading: false,
+      };
     case "REMOVE_USERS":
       return {
         ...state,
