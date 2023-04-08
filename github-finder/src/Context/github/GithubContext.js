@@ -50,7 +50,7 @@ export const GithubProvider = ({ children }) => {
     setLoading();
 
     const response = await fetch(`${GITHUB_URL}/users/${login}`);
-
+    // console.log("response",response)
     if (response.status === 404) {
       window.location = "/notfound";
     } else {
