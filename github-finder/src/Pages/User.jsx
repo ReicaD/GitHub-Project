@@ -55,6 +55,16 @@ function User() {
               </div>
             </div>
           </div>
+          <div className="col-span-2">
+            <div className="mb-6">
+              <h1 className="text-3xl card-tilte">
+                {name}
+                <div className="ml-2 mr-1 badge badge-success">
+                  
+                </div>
+              </h1>
+            </div>
+          </div>
         </div>
       </div>
     </>
