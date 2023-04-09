@@ -50,6 +50,7 @@ function User() {
               <div className="card-body justify-end">
                 <h2 className="card-title mb-0">
                   {name}
+                  <p>{login}</p>
                 </h2>
               </div>
             </div>
