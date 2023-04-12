@@ -11,6 +11,7 @@ export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
     user: {},
+    repos: [],
     blogs: [],
     loading: false,
   };
@@ -38,7 +39,7 @@ export const GithubProvider = ({ children }) => {
   };
 
   const clearAllUsers = () => {
-    if (window.confirm("confirm to clear")) {
+    if (window.confirm("Are you sure you want to clear?")) {
       dispatch({
         type: "REMOVE_USERS",
         payload: [],
@@ -60,7 +61,18 @@ export const GithubProvider = ({ children }) => {
         payload: data,
       });
     }
-  
+  };
+  //get user repos
+  const getUserRepos = async (login) => {
+    setLoading();
+
+    const response = await fetch(`${GITHUB_URL}/users?${login}`, {});
+    const { data } = await response.json();
+    //calls the reducer type
+    dispatch({
+      type: "GET_REPOS",
+      payload: data,
+    });
   };
 
   // console.log("all we",state)
@@ -74,10 +86,12 @@ export const GithubProvider = ({ children }) => {
         users: state.users,
         loading: state.loading,
         user: state.user,
+        repos: state.repos,
         clearUsers,
         searchUsers,
         clearAllUsers,
         getUser,
+        getUserRepos,
       }}
     >
       {children}
