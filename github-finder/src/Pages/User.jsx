@@ -16,10 +16,12 @@ function User() {
   const {
     name,
     company,
+    twitter_username,
     avatar_url,
     location,
     bio,
     blog,
+    type,
     login,
     html_url,
     followers,
@@ -48,10 +50,8 @@ function User() {
                 <img src={avatar_url} alt="" />
               </figure>
               <div className="card-body justify-end">
-                <h2 className="card-title mb-0">
-                  {name}
-                  <p>{login}</p>
-                </h2>
+                <h2 className="card-title mb-0">{name}</h2>
+                <p>{login}</p>
               </div>
             </div>
           </div>
@@ -59,10 +59,58 @@ function User() {
             <div className="mb-6">
               <h1 className="text-3xl card-tilte">
                 {name}
-                <div className="ml-2 mr-1 badge badge-success">
-                  
-                </div>
+                <div className="ml-2 mr-1 badge badge-success">{type}</div>
+                {hireable && (
+                  <div className="mx-1 badge badge-info">Hireable</div>
+                )}
               </h1>
+              <p>{bio}</p>
+              <div className="mt-4 card-actions">
+                <a
+                  href={html_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-neutral"
+                >
+                  Visit DevTracker Profile{" "}
+                </a>
+              </div>
+            </div>
+            <div className="w-full rounded-lg shadow-md bg-100 stats">
+              {location && (
+                <div className="stat">
+                  <div className="stat-title text-md">Location</div>
+                  <div className="text-lg stat-value">{location}</div>
+                </div>
+              )}
+              {blog && (
+                <div className="stat">
+                  <div className="stat-title text-md">Website</div>
+                  <div className="text-lg stat-value">
+                    <a
+                      href={`https://${blog}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {blog}
+                    </a>
+                  </div>
+                </div>
+              )}
+              {twitter_username && (
+                <div className="stat">
+                  <div className="stat-title text-md">Twitter</div>
+                  <div className="text-lg stat-value">
+                    <a
+                      href={`https://twitter.com/${twitter_username}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {twitter_username}
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
