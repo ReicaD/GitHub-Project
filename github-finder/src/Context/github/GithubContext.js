@@ -66,7 +66,7 @@ export const GithubProvider = ({ children }) => {
   const getUserRepos = async (login) => {
     setLoading();
 
-    const response = await fetch(`${GITHUB_URL}/users?${login}`, {});
+    const response = await fetch(`${GITHUB_URL}/users?${login}/repos`, {});
     const { data } = await response.json();
     //calls the reducer type
     dispatch({

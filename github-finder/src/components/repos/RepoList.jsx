@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
+import PropTypes from "prop-types";
 
-function RepoList() {
+function RepoList({ repos }) {
   return (
-    <div>Repos</div>
-  )
+    <div className="rounded-lg shadow-lg card bg-base-100">
+      <div className="card-body">
+        <h2 className="text-3xl my-4 font-bold card-tittle">
+          Top Repositories
+        </h2>
+        {repos.map((repo) => (
+          <h3>{repo.name}</h3>
+        ))}
+      </div>
+    </div>
+  );
 }
+RepoList.protoTypes = {
+  repos: PropTypes.array.isRequired,
+};
 
-export default RepoList
+export default RepoList;

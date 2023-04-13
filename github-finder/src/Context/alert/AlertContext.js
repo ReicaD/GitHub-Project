@@ -12,7 +12,7 @@ export const AlertProvider = ({ children }) => {
       type: "SET_ALERT",
       payload: { msg, type },
     });
-    setTimeout(() => dispatch({ type: "REMOVE_ALERT" }), 4000);
+    setTimeout(() => dispatch({ type: "REMOVE_ALERT" }), 3000);
   };
 
   return (
