@@ -23,6 +23,6 @@ function UserItems({ user: { login, avatar_url } }) {
   );
 }
 UserItems.propTypes = {
-  repos: PropTypes.object.isRequired,
+  repos: PropTypes.object.isRequired
 };
 export default UserItems;
