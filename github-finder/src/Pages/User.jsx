@@ -10,6 +10,7 @@ import RepoList from "../components/repos/RepoList";
 function User() {
   const { getUser, user, loading, getUserRepos, repos } =
     useContext(GithubContext);
+    console.log("all me",repos);
   const params = useParams();
   useEffect(() => {
     getUser(params.login);

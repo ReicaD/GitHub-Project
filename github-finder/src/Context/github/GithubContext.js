@@ -15,7 +15,7 @@ export const GithubProvider = ({ children }) => {
     blogs: [],
     loading: false,
   };
-  const [clear, setClear] = useState([]);
+  const [setClear] = useState([]);
 
   const clearUsers = () => {
     setClear([]);
@@ -51,7 +51,7 @@ export const GithubProvider = ({ children }) => {
     setLoading();
 
     const response = await fetch(`${GITHUB_URL}/users/${login}`);
-    // console.log("response",response)
+
     if (response.status === 404) {
       window.location = "/notfound";
     } else {
@@ -65,17 +65,22 @@ export const GithubProvider = ({ children }) => {
   //get user repos
   const getUserRepos = async (login) => {
     setLoading();
+    const params = new URLSearchParams({
+      sort: "created",
+      per_page: 10,
+    });
+    const response = await fetch(
+      `${GITHUB_URL}/users/${login}/repos?${params}`
+    );
 
-    const response = await fetch(`${GITHUB_URL}/users?${login}/repos`, {});
-    const { data } = await response.json();
+    const data = await response.json();
+
     //calls the reducer type
     dispatch({
       type: "GET_REPOS",
       payload: data,
     });
   };
-
-  // console.log("all we",state)
 
   //setting the loading
   const setLoading = () => dispatch({ type: "SET_LOADING" });
