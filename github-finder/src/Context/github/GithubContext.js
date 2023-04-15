@@ -23,20 +23,7 @@ export const GithubProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
-  //get search results
-  const searchUsers = async (text) => {
-    setLoading();
-    const params = new URLSearchParams({
-      q: text,
-    });
-    const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {});
-    const { items } = await response.json();
-    //calls the reducer type
-    dispatch({
-      type: "GET_USERS",
-      payload: items,
-    });
-  };
+  
 
   const clearAllUsers = () => {
     if (window.confirm("Are you sure you want to clear?")) {
@@ -88,12 +75,9 @@ export const GithubProvider = ({ children }) => {
   return (
     <GithubContext.Provider
       value={{
-        users: state.users,
-        loading: state.loading,
-        user: state.user,
-        repos: state.repos,
+        ...state,
+        dispatch,
         clearUsers,
-        searchUsers,
         clearAllUsers,
         getUser,
         getUserRepos,

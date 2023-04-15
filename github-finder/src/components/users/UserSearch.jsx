@@ -2,30 +2,30 @@ import React from "react";
 import { useState, useContext } from "react";
 import GithubContext from "../../Context/github/GithubContext";
 import AlertContext from "../../Context/alert/AlertContext";
-
+import { searchUsers } from "../../Context/github/GIthubActions";
 function UserSearch() {
   //set text is added for submitting the search from the context store
   const [text, setText] = useState("");
 
   //acsess to users array making sure its not empty
-  const { users, searchUsers, clearUsers, clearAllUsers } =
-    useContext(GithubContext);
+  const { users, clearAllUsers, dispatch } = useContext(GithubContext);
 
   //this function  will help to fire the alert
   const { setAlert } = useContext(AlertContext);
 
   //updates the state on the texte that is typed in by targeting the value
   const handleChange = (e) => setText(e.target.value);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     //validation to confirm if data subjected exists
     if (text === "") {
       setAlert("Warning:type in something", "error");
     } else {
+      dispatch({ type: "SET_LOADING" });
       //@todo search user
-      searchUsers(text);
-
+      const users = await searchUsers(text);
+      dispatch({ type: "GET_USERS", payload: users });
       setText("");
     }
   };
