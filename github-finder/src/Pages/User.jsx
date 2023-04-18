@@ -6,15 +6,22 @@ import { Link } from "react-router-dom";
 import Spinner from "../components/Layout/Spinner";
 import GithubContext from "../Context/github/GithubContext";
 import RepoList from "../components/repos/RepoList";
+import { getUser, getUserRepos } from "../Context/github/GIthubActions";
 
 function User() {
-  const { getUser, user, loading, getUserRepos, repos } =
-    useContext(GithubContext);
-    // console.log("all me",repos);
+  const { user, loading, repos, dispatch } = useContext(GithubContext);
+  // console.log("all me",repos);
   const params = useParams();
+  //getting the user data from async await function to set up the loading state
   useEffect(() => {
-    getUser(params.login);
-    getUserRepos(params.login);
+    dispatch({ type: "SET_LOADING" });
+    const getUserData = async () => {
+      const userData = await getUser(params.login)
+      dispatch({type:"GET_USER", payload:userData});
+      const userRepoData = await getUserRepos(params.login)
+      dispatch({type:"GET_REPOS", payload:userRepoData});
+    };
+    getUserData();
   }, []);
 
   const {
@@ -164,7 +171,7 @@ function User() {
             </div>
           </div>
         </div>
-        <RepoList repos={repos}/>
+        <RepoList repos={repos} />
       </div>
     </>
   );

@@ -3,12 +3,14 @@ import { useState, useContext } from "react";
 import GithubContext from "../../Context/github/GithubContext";
 import AlertContext from "../../Context/alert/AlertContext";
 import { searchUsers } from "../../Context/github/GIthubActions";
+
+
 function UserSearch() {
   //set text is added for submitting the search from the context store
   const [text, setText] = useState("");
 
   //acsess to users array making sure its not empty
-  const { users, clearAllUsers, dispatch } = useContext(GithubContext);
+  const { users,dispatch } = useContext(GithubContext);
 
   //this function  will help to fire the alert
   const { setAlert } = useContext(AlertContext);
@@ -55,7 +57,7 @@ function UserSearch() {
       {/* if users are available the condition below will display */}
       {users.length > 0 && (
         <div>
-          <button onClick={clearAllUsers} className="btn btn-ghost btn-lg">
+          <button onClick={()=>dispatch({type:"CLEAR_USERS"})} className="btn btn-ghost btn-lg">
             Clear Users
           </button>
         </div>
